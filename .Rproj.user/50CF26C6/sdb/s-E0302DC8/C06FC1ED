@@ -1,0 +1,18 @@
+{
+    "contents" : "#          Designed and Developed by Jacob Bieker (jacob@bieker.us)\n#     \n#       This script is designed convert input data to a standard format for\n#       use Brenden-Colson Center and Stand Up 2 Cancer. \n#\n#       Assumptions:\n#       - Data will be passed from another R script in a standard format to this\n#       script.\n#",
+    "created" : 1436302602412.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1628982862",
+    "id" : "C06FC1ED",
+    "lastKnownWriteTime" : 1436302617,
+    "path" : "C:/Users/jacob_000/OneDrive/Research/QBB OHSU/Excel_Mouse_Data/Excel_consolidation/gene_diagrams/genomics_import.R",
+    "project_path" : "genomics_import.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
