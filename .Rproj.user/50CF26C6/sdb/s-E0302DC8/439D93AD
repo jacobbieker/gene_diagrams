@@ -1,12 +1,12 @@
 {
-    "contents" : "#          Designed and Developed by Jacob Bieker (jacob@bieker.us)\n#     \n#       This script is designed to created plots of genomics data for the \n#       Brenden-Colson Center and Stand Up 2 Cancer. \n#\n#       Assumptions:\n#       - Data will be passed from another R script in a standard format to this\n#       script.\n#\n##############################################################################\n#\n#                 Setup\n#\n##############################################################################\n# Check if libraries are installed, if not, install them\nif(require(\"VennDiagram\")){\n  print(\"VennDiagram are loaded correctly\")\n} else {\n  print(\"trying to installVennDiagram\")\n  install.packages(\"VennDiagram\")\n  if(require(\"VennDiagram\"){\n    print(\"VennDiagram are installed and loaded\")\n  } else {\n    stop(\"could not install VennDiagram\")\n  }\n}\n\n# Load data from the Rdata file created by the data import file",
+    "contents" : "#          Designed and Developed by Jacob Bieker (jacob@bieker.us)\n#     \n#       This script is designed to created plots of genomics data for the \n#       Brenden-Colson Center and Stand Up 2 Cancer. \n#\n#       Assumptions:\n#       - Data will be passed from another R script in a standard format to this\n#       script.\n#\n##############################################################################\n#\n#                 Setup\n#\n##############################################################################\n# Check if libraries are installed, if not, install them\nif(require(\"VennDiagram\")){\n  print(\"VennDiagram are loaded correctly\")\n} else {\n  print(\"trying to installVennDiagram\")\n  install.packages(\"VennDiagram\")\n  if(require(\"VennDiagram\"){\n    print(\"VennDiagram are installed and loaded\")\n  } else {\n    stop(\"could not install VennDiagram\")\n  }\n}\n\n# Load data from the Rdata file created by the data import file\n# Assumptions: there is a data.frame called genomics that contains the data needed\ndata <- load(\"genomics.Rdata\")",
     "created" : 1436224457483.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "646023436",
+    "hash" : "3017084108",
     "id" : "439D93AD",
-    "lastKnownWriteTime" : 1436302593,
+    "lastKnownWriteTime" : 1436306216,
     "path" : "C:/Users/jacob_000/OneDrive/Research/QBB OHSU/Excel_Mouse_Data/Excel_consolidation/gene_diagrams/genomic_diagrams.R",
     "project_path" : "genomic_diagrams.R",
     "properties" : {

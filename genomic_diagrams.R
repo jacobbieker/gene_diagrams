@@ -26,3 +26,5 @@ if(require("VennDiagram")){
 }
 
 # Load data from the Rdata file created by the data import file
+# Assumptions: there is a data.frame called genomics that contains the data needed
+data <- load("genomics.Rdata")
