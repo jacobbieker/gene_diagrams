@@ -25,4 +25,5 @@ workbook <- loadWorkbook("data.xlsx")
 
 data_file <- readWorksheet(workbook, sheet = 1, header = TRUE)
 
-data_file
+tumor_data_file <- data_file[ with(data_file,  grepl("T_tumor", Sample)  & !is.na(data_file$Sample) ) , ]
+metastasis_data_file <- data_file[ with(data_file,  grepl("M_tumor", Sample)  & !is.na(data_file$Sample) ) , ]
