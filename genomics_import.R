@@ -26,3 +26,7 @@ if(require("XLConnect")){
   }
 }
 
+excel_file <- system.file("data.xlsx", package = "XLConnect")
+
+workbook <- loadWorkbook(excel_file)
+
