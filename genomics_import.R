@@ -15,18 +15,14 @@
 ##############################################################################
 # Check if libraries are installed, if not, install them
 if(require("XLConnect")){
-  print("XLConnect are loaded correctly")
+  print("XLConnect is loaded correctly")
 } else {
   print("trying to install XLConnect")
-  install.packages("XLConnet")
-  if(require("XLConnect"){
-    print("XLConnect are installed and loaded")
-  } else {
-    stop("could not install XLConnect")
-  }
+  install.packages("XLConnect")
 }
 
-excel_file <- system.file("data.xlsx", package = "XLConnect")
+workbook <- loadWorkbook("data.xlsx")
 
-workbook <- loadWorkbook(excel_file)
+data_file <- readWorksheet(workbook, sheet = 1, header = TRUE)
 
+data_file
