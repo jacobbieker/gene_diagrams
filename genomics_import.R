@@ -27,3 +27,6 @@ data_file <- readWorksheet(workbook, sheet = 1, header = TRUE)
 
 tumor_data_file <- data_file[ with(data_file,  grepl("T_tumor", Sample)  & !is.na(data_file$Sample) ) , ]
 metastasis_data_file <- data_file[ with(data_file,  grepl("M_tumor", Sample)  & !is.na(data_file$Sample) ) , ]
+
+saveRDS(tumor_data_file, file = "tumor.rds")
+saveRDS(metastasis_data_file, file = "metastasis.rds")

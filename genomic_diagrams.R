@@ -18,13 +18,9 @@ if(require("VennDiagram")){
 } else {
   print("trying to installVennDiagram")
   install.packages("VennDiagram")
-  if(require("VennDiagram"){
-    print("VennDiagram are installed and loaded")
-  } else {
-    stop("could not install VennDiagram")
-  }
 }
 
 # Load data from the Rdata file created by the data import file
 # Assumptions: there is a data.frame called genomics that contains the data needed
-data <- load("genomics.Rdata")
+metastasis_data <- readRDS("metastasis.rds")
+tumor_data <- readRDS('tumor.rds')
