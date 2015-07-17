@@ -23,10 +23,12 @@ if(require("XLConnect")){
 
 workbook <- loadWorkbook("data.xlsx")
 
-data_file <- readWorksheet(workbook, sheet = 1, header = TRUE)
+labkey.data <- readWorksheet(workbook, sheet = 1, header = TRUE)
+for (variant in variants) {
+  
+}
+tumor_labkey.data <- labkey.data[ with(labkey.data,  grepl("T_tumor", Sample)  & !is.na(labkey.data$Sample) ) , ]
+metastasis_labkey.data <- labkey.data[ with(labkey.data,  grepl("M_tumor", Sample)  & !is.na(labkey.data$Sample) ) , ]
 
-tumor_data_file <- data_file[ with(data_file,  grepl("T_tumor", Sample)  & !is.na(data_file$Sample) ) , ]
-metastasis_data_file <- data_file[ with(data_file,  grepl("M_tumor", Sample)  & !is.na(data_file$Sample) ) , ]
-
-saveRDS(tumor_data_file, file = "tumor.rds")
-saveRDS(metastasis_data_file, file = "metastasis.rds")
+saveRDS(tumor_labkey.data, file = "tumor.rds")
+saveRDS(metastasis_labkey.data, file = "metastasis.rds")
