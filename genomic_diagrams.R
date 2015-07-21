@@ -12,7 +12,6 @@
 #
 ##############################################################################
 # Check if libraries are installed, if not, install them
-require("VennDiagram")
 require(Cairo)
 
 tumor_data <- labkey.data[ with(labkey.data,  grepl("T_tumor", sample)  & !is.na(labkey.data$sample) ) , ]
@@ -65,11 +64,11 @@ for (m_variant in m_variants) {
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_barplot.png}", type="png");
 #  Plot:
-barplot(average_t, ylab= "Percentage", names.arg=t_labels, axis.lty=3, col=t_cols, space=0.5, cex.names=0.8, las=3, main="Average Test Percentage");
+barplot(average_t, ylab= "Variant Frequency", names.arg=t_labels, axis.lty=3, col=t_cols, space=0.5, cex.names=0.8, las=3, main="Primary Tumor");
 dev.off();
 
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Metastasis_barplot.png}", type="png");
 #  Plot:
-barplot(average_m, ylab= "Percentage", names.arg=m_labels, axis.lty=3, col=m_cols, space=0.5, cex.names=0.8, las=3, main="Average Test Percentage");
+barplot(average_m, ylab= "Variant Frequency", names.arg=m_labels, axis.lty=3, col=m_cols, space=0.5, cex.names=0.8, las=3, main="Metastisis Tumor");
 dev.off();
