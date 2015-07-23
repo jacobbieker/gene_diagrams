@@ -14,6 +14,7 @@
 # Check if libraries are installed, if not, install them
 require(Cairo)
 
+#Split data into tumor data and metastasis data
 tumor_data <- labkey.data[ with(labkey.data,  grepl("T_tumor", sample)  & !is.na(labkey.data$sample) ) , ]
 metastasis_data <- labkey.data[ with(labkey.data,  grepl("M_tumor", sample)  & !is.na(labkey.data$sample) ) , ]
 
@@ -62,13 +63,19 @@ for (m_variant in m_variants) {
 ##################################################                                   
 
 #   Open a Cairo device to take your plotting output:
+Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
+#  Plot:
+plot(average_t, average_m, ylab= "Variant Frequency", main="Primary Tumor");
+dev.off();
+
+#   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_barplot.png}", type="png");
 #  Plot:
-barplot(average_t, ylab= "Variant Frequency", names.arg=t_labels, axis.lty=3, col=t_cols, space=0.5, cex.names=0.8, las=3, main="Primary Tumor");
+barplot(average_t, ylab= "Variant Frequency", names.arg=t_labels, axis.lty=3, space=0.5, cex.names=0.8, las=3, main="Primary Tumor");
 dev.off();
 
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Metastasis_barplot.png}", type="png");
 #  Plot:
-barplot(average_m, ylab= "Variant Frequency", names.arg=m_labels, axis.lty=3, col=m_cols, space=0.5, cex.names=0.8, las=3, main="Metastisis Tumor");
+barplot(average_m, ylab= "Variant Frequency", names.arg=m_labels, axis.lty=3, space=0.5, cex.names=0.8, las=3, main="Metastisis Tumor");
 dev.off();
