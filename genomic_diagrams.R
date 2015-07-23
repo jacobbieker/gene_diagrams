@@ -62,11 +62,7 @@ for (m_variant in m_variants) {
 #
 ##################################################                                   
 
-#   Open a Cairo device to take your plotting output:
-Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
-#  Plot:
-plot(average_t, average_m, ylab= "Variant Frequency", main="Primary Tumor");
-dev.off();
+
 
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_barplot.png}", type="png");
@@ -78,4 +74,15 @@ dev.off();
 Cairo(file="${imgout:Metastasis_barplot.png}", type="png");
 #  Plot:
 barplot(average_m, ylab= "Variant Frequency", names.arg=m_labels, axis.lty=3, space=0.5, cex.names=0.8, las=3, main="Metastisis Tumor");
+dev.off();
+
+# Start creation of tumor vs metastasis plot. Main problem is having to make both vectors the same length
+
+#TODO If a gene exists in one, but not the other, create an entry in the other for that gene and add a zero, else continue
+
+
+#   Open a Cairo device to take your plotting output:
+Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
+#  Plot:
+plot(average_t, average_m, ylab= "Variant Frequency", main="Primary Tumor");
 dev.off();
