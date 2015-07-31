@@ -160,6 +160,25 @@ for ( i in 1:length(m_labels)) {
   }
 }
 
+#Same thing, now for metastasis first
+#TODO: Make this a function
+#Adds all primary metastasis labels and values to the data.frame
+metastasis_data.frame <- data.frame();
+for( i in 1:length(m_labels)) {
+  metastasis_data.frame[, m_labels[i]] <- average_m[i];
+  print(metastasis_data.frame);
+}
+
+# Now add the tumor ones that do not exist in the metastasis part
+for ( i in 1:length(t_labels)) {
+  if (t_labels[i] %in% colnames(metastasis_data.frame)) {
+    print("Overlap");
+  } else {
+    # If it exits in tumor and not metastasis, then metastasis has a 0 for the mutation
+    metastasis_data.frame[, t_labels[i]] <- 0;
+    print(metastasis_data.frame)
+  }
+}
 #TODO If a gene exists in one, but not the other, create an entry in the other for that gene and add a zero, else continue
 
 
