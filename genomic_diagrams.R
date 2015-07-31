@@ -141,6 +141,25 @@ dev.off();
 
 # Start creation of tumor vs metastasis plot. Main problem is having to make both vectors the same length
 # Plan: Start with creating a single row data.frame with all the Tumor ones. Then, go through the column names in that data.frame, checking whether the column names from Metastasis exist or not, if not, add the column with a 0, if so, do nothing. Repeat for other one. Sort both alphabetically to make sure they line up correctly, then scatter plot it.
+
+#Adds all primary tumor labels and values to the data.frame
+tumor_data.frame <- data.frame();
+for( i in 1:length(t_labels)) {
+  tumor_data.frame[, t_labels[i]] <- average_t[i];
+  print(tumor_data.frame);
+}
+
+# Now add the metastasis ones that do not exist in the tumor part
+for ( i in 1:length(m_labels)) {
+  if (m_labels[i] %in% colnames(tumor_data.frame)) {
+    print("Overlap");
+  } else {
+    # If it exits in metastasis and not tumor, then tumor has a 0 for the mutation
+    tumor_data.frame[, m_labels[i]] <- 0;
+    print(tumor_data.frame)
+  }
+}
+
 #TODO If a gene exists in one, but not the other, create an entry in the other for that gene and add a zero, else continue
 
 
