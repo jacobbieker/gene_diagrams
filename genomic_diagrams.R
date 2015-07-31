@@ -143,10 +143,9 @@ dev.off();
 # Plan: Start with creating a single row data.frame with all the Tumor ones. Then, go through the column names in that data.frame, checking whether the column names from Metastasis exist or not, if not, add the column with a 0, if so, do nothing. Repeat for other one. Sort both alphabetically to make sure they line up correctly, then scatter plot it.
 
 #Adds all primary tumor labels and values to the data.frame
-tumor_data.frame <- data.frame();
+tumor_data.frame <- data.frame(default = 0);
 for( i in 1:length(t_labels)) {
   tumor_data.frame[, t_labels[i]] <- average_t[i];
-  print(tumor_data.frame);
 }
 
 # Now add the metastasis ones that do not exist in the tumor part
@@ -156,17 +155,17 @@ for ( i in 1:length(m_labels)) {
   } else {
     # If it exits in metastasis and not tumor, then tumor has a 0 for the mutation
     tumor_data.frame[, m_labels[i]] <- 0;
-    print(tumor_data.frame)
   }
 }
+
+print(tumor_data.frame);
 
 #Same thing, now for metastasis first
 #TODO: Make this a function
 #Adds all primary metastasis labels and values to the data.frame
-metastasis_data.frame <- data.frame();
+metastasis_data.frame <- data.frame(default = 0);
 for( i in 1:length(m_labels)) {
   metastasis_data.frame[, m_labels[i]] <- average_m[i];
-  print(metastasis_data.frame);
 }
 
 # Now add the tumor ones that do not exist in the metastasis part
@@ -176,9 +175,9 @@ for ( i in 1:length(t_labels)) {
   } else {
     # If it exits in tumor and not metastasis, then metastasis has a 0 for the mutation
     metastasis_data.frame[, t_labels[i]] <- 0;
-    print(metastasis_data.frame)
   }
 }
+print(metastasis_data.frame);
 
 #Sort both so the order is the same and the points line up, not really matter the order
 metastasis_data.frame <- metastasis_data.frame[,order(names(metastasis_data.frame))]
