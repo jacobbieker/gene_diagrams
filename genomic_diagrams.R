@@ -179,11 +179,19 @@ for ( i in 1:length(t_labels)) {
     print(metastasis_data.frame)
   }
 }
+
+#Sort both so the order is the same and the points line up, not really matter the order
+metastasis_data.frame <- metastasis_data.frame[,order(names(metastasis_data.frame))]
+tumor_data.frame <- tumor_data.frame[,order(names(tumor_data.frame))]
+
+#Convert points to vector to be plotted
+tumor_scatterplot.data <- as.numeric(as.vector(tumor_data.frame[1,]))
+metastasis_scatterplot.data <- as.numeric(as.vector(metastasis_data.frame[1,]))
 #TODO If a gene exists in one, but not the other, create an entry in the other for that gene and add a zero, else continue
 
 
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
 #  Plot:
-plot(average_t, average_m, ylab= "Metastasis", xlab = "Primary", main="Primary Tumor");
+plot(tumor_scatterplot.data, metastasis_scatterplot.data, ylab= "Metastasis", xlab = "Primary", main="Primary Tumor");
 dev.off();
