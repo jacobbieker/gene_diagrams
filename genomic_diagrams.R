@@ -179,6 +179,10 @@ for ( i in 1:length(t_labels)) {
 }
 print(metastasis_data.frame);
 
+# Remove default column to reduce to only the data
+metastasis_data.frame[, "default"] <- NULL
+tumor_data.frame[, "default"] <- NULL
+
 #Sort both so the order is the same and the points line up, not really matter the order
 metastasis_data.frame <- metastasis_data.frame[,order(names(metastasis_data.frame))]
 tumor_data.frame <- tumor_data.frame[,order(names(tumor_data.frame))]
