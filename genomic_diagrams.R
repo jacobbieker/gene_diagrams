@@ -84,5 +84,5 @@ dev.off();
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
 #  Plot:
-plot(average_t, average_m, ylab= "Variant Frequency", main="Primary Tumor");
+plot(average_t, average_m, ylab= "Metastasis", xlab = "Primary", main="Primary Tumor");
 dev.off();
