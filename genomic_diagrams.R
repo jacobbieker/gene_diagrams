@@ -138,6 +138,6 @@ metastasis_scatterplot.data <- as.numeric(as.vector(metastasis_data.frame[1,]))
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
 #  Plot:
-sizeplot(tumor_scatterplot.data, metastasis_scatterplot.data, pch=20, col="grey", scale=0.5, size=c(0.5, 2), xlim=c(0:1), ylim=c(0:1), ylab= "Metastasis", xlab = "Primary", main="Primary vs Metastasis Mutations");
+sizeplot(tumor_scatterplot.data, metastasis_scatterplot.data, pch=20, col="grey", powscale=TRUE, scale=0.7, xlim=c(0:1), ylim=c(0:1), ylab= "Metastasis", xlab = "Primary", main="Primary vs Metastasis Mutations");
 abline(0,1, lty=3);
 dev.off();
