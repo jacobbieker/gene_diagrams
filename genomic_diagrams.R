@@ -182,7 +182,6 @@ print(metastasis_data.frame);
 # Remove default column to reduce to only the data
 metastasis_data.frame[, "default"] <- NULL
 tumor_data.frame[, "default"] <- NULL
-
 #Sort both so the order is the same and the points line up, not really matter the order
 metastasis_data.frame <- metastasis_data.frame[,order(names(metastasis_data.frame))]
 tumor_data.frame <- tumor_data.frame[,order(names(tumor_data.frame))]
@@ -196,5 +195,6 @@ metastasis_scatterplot.data <- as.numeric(as.vector(metastasis_data.frame[1,]))
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
 #  Plot:
-plot(tumor_scatterplot.data, metastasis_scatterplot.data, ylab= "Metastasis", xlab = "Primary", main="Primary Tumor");
+plot(tumor_scatterplot.data, xlim=c(0:1), ylim=c(0:1), metastasis_scatterplot.data, ylab= "Metastasis", xlab = "Primary", main="Primary vs Metastasis Mutations");
+abline(0,1, lty=3);
 dev.off();
