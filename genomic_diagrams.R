@@ -132,12 +132,11 @@ tumor_data.frame <- tumor_data.frame[,order(names(tumor_data.frame))]
 #Convert points to vector to be plotted
 tumor_scatterplot.data <- as.numeric(as.vector(tumor_data.frame[1,]))
 metastasis_scatterplot.data <- as.numeric(as.vector(metastasis_data.frame[1,]))
-#TODO If a gene exists in one, but not the other, create an entry in the other for that gene and add a zero, else continue
 
 
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
 #  Plot:
-sizeplot(tumor_scatterplot.data, metastasis_scatterplot.data, pch=20, col="grey", powscale=TRUE, scale=0.7, xlim=c(0:1), ylim=c(0:1), ylab= "Metastasis", xlab = "Primary", main="Primary vs Metastasis Mutations");
+sizeplot(jitter(tumor_scatterplot.data), jitter(metastasis_scatterplot.data), bg="red", pch=23, col="black", powscale=TRUE, scale=0.7, xlim=c(0:1), ylim=c(0:1), ylab= "Metastasis", xlab = "Primary", main="Primary vs Metastasis Mutations");
 abline(0,1, lty=3);
 dev.off();
