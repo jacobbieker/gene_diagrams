@@ -36,10 +36,10 @@ tumor_data <- tumor_data[match(average_t, tumor_data$average_t),];
 
 # Getting the labels to put on the plots
 t_labels <- c();
-t_variants <- tumor_data$variant;
+t_variants <- tumor_data$gene;
 
 for (t_variant in t_variants) {
-  t_parts <- strsplit(t_variant, ":");
+  t_parts <- strsplit(t_variant, "[:;(]");
   t_labels <-c(t_labels, unique(rapply(t_parts, function(x) head(x, 1))))
 }
 
@@ -55,10 +55,10 @@ metastasis_data <- metastasis_data[match(average_m, metastasis_data$average_m),]
 
 # Getting the labels to put on the plots
 m_labels <- c();
-m_variants <- metastasis_data$variant;
+m_variants <- metastasis_data$gene;
 
 for (m_variant in m_variants) {
-  m_parts <- strsplit(m_variant, ":");
+  m_parts <- strsplit(m_variant, "[:;(]");
   m_labels <-c(m_labels, unique(rapply(m_parts, function(x) head(x, 1))))
 }
 
@@ -136,6 +136,7 @@ metastasis_scatterplot.data <- as.numeric(as.vector(metastasis_data.frame[1,]))
 
 #   Open a Cairo device to take your plotting output:
 Cairo(file="${imgout:Primary_Metastasis.png}", type="png");
+par(pty="s") 
 #  Plot:
 sizeplot(jitter(tumor_scatterplot.data), jitter(metastasis_scatterplot.data), bg="red", pch=23, col="black", powscale=TRUE, scale=0.7, xlim=c(0:1), ylim=c(0:1), ylab= "Metastasis", xlab = "Primary", main="Primary vs Metastasis Mutations");
 abline(0,1, lty=3);
