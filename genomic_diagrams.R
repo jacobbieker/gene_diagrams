@@ -70,11 +70,10 @@ for (m_variant in m_variants) {
 
 # First, check if one or the other of the data.frames is null, and skip parts that need that if so
 
+# Checks if the appropriate data.frame is not empty, give boolean which determines what graphs
+# created and displayed
 is_m <- !(is.data.frame(metastasis_data) & nrow(metastasis_data)==0)
 is_t <- !(is.data.frame(tumor_data) & nrow(tumor_data)==0)
-
-print(is_m);
-print(is_t);
 
 if (is_t == TRUE) {
   #   Open a Cairo device to take your plotting output:
